@@ -1,4 +1,4 @@
-<x-ux::layouts.modal :title="__('Change Dummy Model Title Password')" submit="save">
+<x-ux::layouts.modal :title="__('Change User Password')" submit="save">
     <x-slot name="body">
         <x-ux::input :label="__('New Password')" type="password" model="password"/>
         <x-ux::input :label="__('Confirm New Password')" type="password" model="password_confirmation"/>

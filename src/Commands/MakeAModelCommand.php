@@ -37,32 +37,17 @@ class MakeAModelCommand extends Command
             return;
         }
 
-        $this->deleteUserMigration();
         $this->makeStubs();
 
         $this->warn('Model made: <info>' . $this->modelParser->relativeClassPath() . '</info>');
         $this->warn('Factory made: <info>' . $this->factoryPath('relativeClassPath') . '</info>');
     }
 
-    private function deleteUserMigration()
-    {
-        $path = 'database/migrations/2014_10_12_000000_create_users_table.php';
-        $file = base_path($path);
-
-        if ($this->filesystem->exists($file)) {
-            $this->filesystem->delete($file);
-
-            $this->warn('Migration deleted: <info>' . $path . '</info>');
-        }
-    }
-
     private function makeStubs()
     {
-        $path = config('ux.stub_path') . '/amodel';
-        $modelFile = $this->modelParser->className() == 'User' ? 'UserModel.php' : 'Model.php';
         $stubs = [
-            $this->factoryPath('classPath') => $path . '/factories/Factory.php',
-            $this->modelParser->classPath() => $path . '/models/' . $modelFile,
+            $this->factoryPath('classPath') => config('ux.stub_path') . '/amodel/Factory.php',
+            $this->modelParser->classPath() => config('ux.stub_path') . '/amodel/Model.php',
         ];
 
         $replaces = [

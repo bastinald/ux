@@ -1,25 +1,25 @@
 <?php
 
-namespace DummyComponentNamespace;
+namespace App\Components\Users;
 
 use Bastinald\Ux\Traits\WithModel;
-use DummyModelNamespace\DummyModelClass;
+use App\Models\User;
 use Livewire\Component;
 
 class Password extends Component
 {
     use WithModel;
 
-    public $dummyModelVariable;
+    public $user;
 
-    public function mount(DummyModelClass $dummyModelVariable)
+    public function mount(User $user)
     {
-        $this->dummyModelVariable = $dummyModelVariable;
+        $this->user = $user;
     }
 
     public function render()
     {
-        return view('dummy.prefix.password');
+        return view('users.password');
     }
 
     public function rules()
@@ -33,7 +33,7 @@ class Password extends Component
     {
         $this->validateModel();
 
-        $this->dummyModelVariable->update($this->getModel(['password']));
+        $this->user->update($this->getModel(['password']));
 
         $this->emit('hideModal');
     }

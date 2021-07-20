@@ -1,9 +1,9 @@
 <?php
 
-namespace DummyComponentNamespace;
+namespace App\Components\Users;
 
 use Bastinald\Ux\Traits\WithModel;
-use DummyModelNamespace\DummyModelClass;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
@@ -17,8 +17,8 @@ class Index extends Component
 
     public function route()
     {
-        return Route::get('dummy-route-uri', static::class)
-            ->name('dummy.prefix')
+        return Route::get('users', static::class)
+            ->name('users')
             ->middleware('auth');
     }
 
@@ -34,18 +34,18 @@ class Index extends Component
 
     public function render()
     {
-        return view('dummy.prefix.index', [
-            'dummyModelVariables' => $this->query()->paginate(),
+        return view('users.index', [
+            'users' => $this->query()->paginate(),
         ]);
     }
 
     public function query()
     {
-        $query = DummyModelClass::query();
+        $query = User::query();
 
         if ($search = $this->getModel('search')) {
             $query->where(function (Builder $query) use ($search) {
-                $query->where('id', 'like', '%' . $search . '%');
+                $query->orWhere('id', 'like', '%' . $search . '%');
                 $query->orWhere('name', 'like', '%' . $search . '%');
                 $query->orWhere('email', 'like', '%' . $search . '%');
             });
@@ -65,8 +65,8 @@ class Index extends Component
         return $query;
     }
 
-    public function delete(DummyModelClass $dummyModelVariable)
+    public function delete(User $user)
     {
-        $dummyModelVariable->delete();
+        $user->delete();
     }
 }

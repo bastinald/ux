@@ -25,8 +25,9 @@ class MakeAuthCommand extends Command
         }
 
         $this->makeStubs();
+        $this->deleteUserMigration();
         $this->determineFontAwesomeVersion();
-        $this->executeFinalCommands();
+        $this->executeCommands();
 
         $this->info('Auth made successfully.');
         $this->info(config('app.url'));
@@ -46,10 +47,20 @@ class MakeAuthCommand extends Command
         }
     }
 
+    private function deleteUserMigration()
+    {
+        $path = 'database/migrations/2014_10_12_000000_create_users_table.php';
+        $file = base_path($path);
+
+        if ($this->filesystem->exists($file)) {
+            $this->filesystem->delete($file);
+
+            $this->warn('File deleted: <info>' . $path . '</info>');
+        }
+    }
+
     private function determineFontAwesomeVersion()
     {
-        Artisan::call('vendor:publish', ['--tag' => 'ux:config'], $this->getOutput());
-
         $version = $this->choice(
             'Which version of Font Awesome will you use?',
             ['Free', 'Pro (requires global NPM token config)']
@@ -70,10 +81,8 @@ class MakeAuthCommand extends Command
         }
     }
 
-    private function executeFinalCommands()
+    private function executeCommands()
     {
-        Artisan::call('make:amodel', ['class' => 'User', '--force' => true], $this->getOutput());
-        Artisan::call('make:crud', ['path' => 'Users', '--force' => true], $this->getOutput());
         Artisan::call('migrate:auto', ['--fresh' => true, '--seed' => true], $this->getOutput());
 
         exec('npm install');

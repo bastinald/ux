@@ -70,8 +70,7 @@ class MakeCrudCommand extends Command
 
     private function makeStubs()
     {
-        $dir = $this->modelParser->className() == 'User' ? 'crud-user' : 'crud';
-        $stubs = config('ux.stub_path') . '/' . $dir;
+        $stubs = config('ux.stub_path') . '/crud';
 
         foreach ($this->filesystem->allFiles($stubs) as $stub) {
             $classDir = Str::replace(base_path() . DIRECTORY_SEPARATOR, '', dirname($this->componentParser->classPath()));

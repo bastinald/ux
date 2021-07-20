@@ -1,6 +1,6 @@
 <?php
 
-namespace DummyModelNamespace;
+namespace App\Models;
 
 use Bastinald\Ux\Traits\HasHashes;
 use Faker\Generator;
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
-class DummyModelClass extends Authenticatable
+class User extends Authenticatable
 {
     use HasFactory, HasHashes, Notifiable;
 
