@@ -1,0 +1,68 @@
+$white: #ffffff !default;
+$light: #f8f9fa !default;
+
+$border-radius: 0.5rem !default;
+$border-radius-lg: $border-radius !default;
+$border-radius-sm: $border-radius !default;
+
+$card-cap-bg: $white;
+$card-cap-padding-y: 1rem !default;
+
+$container-max-width: 1140px !default;
+
+$dd-margin-bottom: 0 !default;
+$dl-margin-bottom: 0 !default;
+
+$enable-negative-margins: true !default;
+$enable-validation-icons: false !default;
+
+$font-family-sans-serif: 'Poppins', sans-serif !default;
+$font-size-base: 0.9rem !default;
+
+$form-label-margin-bottom: 0.25rem !default;
+$input-group-addon-bg: $white !default;
+
+$link-decoration: none !default;
+
+$list-group-action-active-bg: $light !default;
+$list-group-action-hover-color: inherit !default;
+$list-group-item-padding-y: 1rem !default;
+
+$loader-bottom: 1rem !default;
+$loader-padding-y: 0.75rem !default;
+$loader-z-index: 1070 !default;
+
+$navbar-toggler-padding-x: 0 !default;
+$navbar-toggler-padding-y: 0 !default;
+$navbar-dark-toggler-border-color: transparent !default;
+$navbar-light-toggler-border-color: transparent !default;
+
+* {
+    outline: none !important;
+}
+
+dd {
+    margin-bottom: $dd-margin-bottom !important;
+}
+
+dl {
+    margin-bottom: $dl-margin-bottom !important;
+}
+
+.container {
+    max-width: $container-max-width !important;
+}
+
+.text-muted a, .text-reset a {
+    color: inherit !important;
+}
+
+#ux-loader {
+    pointer-events: none;
+    padding-top: $loader-padding-y;
+    padding-bottom: $loader-padding-y;
+    bottom: $loader-bottom;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: $loader-z-index;
+}
