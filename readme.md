@@ -2,7 +2,7 @@
 
 Laravel UI, Auth, & CRUD scaffolding package using Bootstrap & Livewire.
 
-(Video TBA)
+<a href="https://www.youtube.com/watch?v=HpqKz1COiZE"><img src="https://i.imgur.com/IWHZsV9.png"></a>
 
 ## Features
 
