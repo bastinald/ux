@@ -68,3 +68,5 @@ Make the package UI & Auth scaffolding:
 ```console
 php artisan make:auth
 ```
+
+Now you can visit your app URL and login using `user@example.com:password`.
