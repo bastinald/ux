@@ -12,12 +12,12 @@
     ]);
 @endphp
 
-<dl {{ $attributes }}>
+<dl>
     @if($title)
         <dt>{{ $title }}</dt>
     @endif
 
-    <dd>
+    <dd {{ $attributes }}>
         @if($data || !$slot->isEmpty())
             {{ $data ?? $slot }}
         @elseif($date)
