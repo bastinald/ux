@@ -3,9 +3,6 @@
         <x-ux::desc :title="__('ID')" :data="$user->id"/>
         <x-ux::desc :title="__('Name')" :data="$user->name"/>
         <x-ux::desc :title="__('Email')" :data="$user->email"/>
-
-        <x-ux::modal-heading :label="__('Dates')"/>
-
         <x-ux::desc :title="__('Timezone')" :data="$user->timezone"/>
         <x-ux::desc :title="__('Created At')" :date="$user->created_at"/>
         <x-ux::desc :title="__('Updated At')" :date="$user->updated_at"/>
