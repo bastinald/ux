@@ -24,11 +24,14 @@ This package features a ton of Blade components to keep your code neat.
 - [Dropdown](#dropdown)
 - [Dropdown Item](#dropdown-item)
 - [Error](#error)
+- [Form Group](#form-group)
+- [Form Row](#form-row)
 - [Help](#help)
 - [Icon](#icon)
 - [Image](#image)
 - [Input](#input)
 - [Input Addon](#input-addon)
+- [Item](#item)
 - [Label](#label)
 - [Link](#link)
 - [List](#list)
@@ -177,7 +180,7 @@ An input array container with an add button.
 <x-ux::array key="locations">
     @foreach($this->getModel('locations', []) as $key => $location)
         <x-ux::array-row>
-            <div class="col-lg mb-2 mb-md-0">
+            <div class="col-lg mb-2 mb-lg-0">
                 <x-ux::input :placeholder="__('Address')" size="sm" model="locations.{{ $key }}.address"/>
             </div>
             <div class="col-lg-auto">
@@ -200,7 +203,7 @@ An input array row container.
 
 ```html
 <x-ux::array-row>
-    <div class="col-lg mb-2 mb-md-0">
+    <div class="col-lg mb-2 mb-lg-0">
         <x-ux::input :placeholder="__('Address')" size="sm" model="locations.{{ $key }}.address"/>
     </div>
     <div class="col-lg-auto">
@@ -347,8 +350,12 @@ A description list.
 Available props:
 
 - `title`: list title (via `x-slot` or attribute)
+- `icon`: Font Awesome icon to prepend (eg `cog`, `robot`)
+- `iconColor`: Bootstrap color for icon (eg `danger`, `info`)
 - `data`: list data (via `slot`, `x-slot` or attribute)
 - `date`: date that will be converted to user timezone
+- `color`: Bootstrap color (eg `danger`, `info`)
+- `size`: Bootstrap button size (eg `sm`, `lg`)
 
 ## Dropdown
 
@@ -399,6 +406,40 @@ A Bootstrap validation error.
 Available props:
 
 - `key`: Livewire model key
+
+## Form Group
+
+A form group container.
+
+```html
+<x-ux::form-group :label="__('Settings')">
+    <x-ux::check :checkLabel="__('Active')" model="active"/>
+    <x-ux::check :checkLabel="__('Assign')" model="assign"/>
+</x-ux::form-group>
+```
+
+Available props:
+
+- `label`: label content (via `slot` or attribute)
+
+## Form Row
+
+A form row container.
+
+```html
+<x-ux::form-row :label="__('Name')">
+    <div class="col-lg mb-2 mb-lg-0">
+        <x-ux::input :placeholder="__('First Name')" model="first_name"/>
+    </div>
+    <div class="col">
+        <x-ux::input :placeholder="__('Last Name')" model="last_name"/>
+    </div>
+</x-ux::form-row>
+```
+
+Available props:
+
+- `label`: label content (via `slot` or attribute)
 
 ## Help
 
@@ -480,6 +521,23 @@ Available props:
 
 - `icon`: Font Awesome icon (eg `cog`, `robot`)
 - `label`: input addon label (via `slot` or attribute)
+
+## Item
+
+A line item.
+
+```html
+<x-ux::item icon="check" iconColor="success" :data="$user->active"/>
+```
+
+Available props:
+
+- `icon`: Font Awesome icon to prepend (eg `cog`, `robot`)
+- `iconColor`: Bootstrap color for icon (eg `danger`, `info`)
+- `data`: item data (via `slot`, `x-slot` or attribute)
+- `date`: date that will be converted to user timezone
+- `color`: Bootstrap color (eg `danger`, `info`)
+- `size`: Bootstrap button size (eg `sm`, `lg`)
 
 ## Label
 

@@ -10,7 +10,7 @@
             <x-ux::list-row>
                 <div class="col-lg mb-3 mb-lg-0">
                     <x-ux::link :label="$dummyModelVariable->name" click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
-                    <x-ux::desc :date="$dummyModelVariable->created_at" class="small text-muted"/>
+                    <x-ux::item :date="$dummyModelVariable->created_at" size="small" color="muted"/>
                 </div>
                 <div class="col-lg-auto d-flex gap-2">
                     <x-ux::action icon="eye" :title="__('Read')" click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>

@@ -10,7 +10,7 @@
             <x-ux::list-row>
                 <div class="col-lg mb-3 mb-lg-0">
                     <x-ux::link :label="$user->name" click="$emit('showModal', 'users.read', {{ $user->id }})"/>
-                    <x-ux::desc :date="$user->created_at" class="small text-muted"/>
+                    <x-ux::item :date="$user->created_at" size="small" color="muted"/>
                 </div>
                 <div class="col-lg-auto d-flex gap-2">
                     <x-ux::action icon="eye" :title="__('Read')" click="$emit('showModal', 'users.read', {{ $user->id }})"/>

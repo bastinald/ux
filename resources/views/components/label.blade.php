@@ -4,7 +4,7 @@
 
 @php
     $attributes = $attributes->class([
-        'form-label',
+        'form-label d-block',
     ])->merge([
         //
     ]);

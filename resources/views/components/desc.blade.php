@@ -1,23 +1,28 @@
 @props([
     'title' => null,
+    'icon' => null,
+    'iconColor' => null,
     'data' => null,
     'date' => null,
+    'color' => null,
+    'size' => null,
 ])
 
 @php
     $attributes = $attributes->class([
-        //
+        $size => $size,
+        'text-' . $color => $color,
     ])->merge([
         //
     ]);
 @endphp
 
 <dl>
-    @if($title)
-        <dt>{{ $title }}</dt>
-    @endif
+    <dt>{{ $title }}</dt>
 
     <dd {{ $attributes }}>
+        <x-ux::icon :name="$icon" :color="$iconColor"/>
+
         @if($data || !$slot->isEmpty())
             {{ $data ?? $slot }}
         @elseif($date)

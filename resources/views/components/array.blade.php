@@ -14,13 +14,13 @@
 @endphp
 
 <div {{ $attributes }}>
-    <label class="d-block mb-1">
-        {{ __($labels) }}
-    </label>
+    <x-ux::label :label="__($labels)"/>
 
-    <div class="list-group mb-2">
-        {{ $slot }}
-    </div>
+    @if(!$slot->isEmpty())
+        <div class="list-group mb-2">
+            {{ $slot }}
+        </div>
+    @endif
 
     <x-ux::button icon="plus" :label="__('Add ' . $label)" size="sm" click="addModelItem('{{ $key }}')"
         :color="!$errors->has($key) ? 'outline-primary' : 'outline-danger'"/>
