@@ -8,6 +8,7 @@ This package features a ton of Blade components to keep your code neat.
 - [Modal Layout](#modal-layout)
 - [Page Layout](#page-layout)
 - [Action](#action)
+- [Action Column](#action-column)
 - [Action Dropdown](#action-dropdown)
 - [Actions](#actions)
 - [Alert](#alert)
@@ -19,11 +20,13 @@ This package features a ton of Blade components to keep your code neat.
 - [Check Label](#check-label)
 - [Close](#close)
 - [Color](#color)
+- [Column](#column)
 - [Datalist](#datalist)
 - [Desc](#desc)
 - [Dropdown](#dropdown)
 - [Dropdown Item](#dropdown-item)
 - [Error](#error)
+- [Flex](#flex)
 - [Form Group](#form-group)
 - [Form Row](#form-row)
 - [Help](#help)
@@ -42,6 +45,7 @@ This package features a ton of Blade components to keep your code neat.
 - [Pagination](#pagination)
 - [Progress](#progress)
 - [Radio](#radio)
+- [Row](#row)
 - [Select](#select)
 - [Textarea](#textarea)
 
@@ -128,6 +132,25 @@ Available props:
 - `click`: Livewire action when clicked
 - `confirm`: add click confirmation prompt
 
+## Action Column
+
+A CRUD list row action row column.
+
+```html
+<x-ux::action-column>
+    <x-ux::action icon="eye" :title="__('Read')" click="$emit('showModal', 'users.read', {{ $user->id }})"/>
+    <x-ux::action icon="pencil-alt" :title="__('Update')" click="$emit('showModal', 'users.save', {{ $user->id }})"/>
+    <x-ux::action icon="unlock-alt" :title="__('Password')" click="$emit('showModal', 'users.password', {{ $user->id }})"/>
+    <x-ux::action icon="trash-alt" :title="__('Delete')" click="delete({{ $user->id }})" confirm/>
+</x-ux::action-column>
+```
+
+Available props:
+
+- `width`: Bootstrap column width (eg `3`, `4`, `auto`)
+- `flex`: use flexbox on the column
+- `gap`: Bootstrap flexbox gap (eg `2`, `3`)
+
 ## Action Dropdown
 
 A CRUD action dropdown for filtering/sorting/etc.
@@ -156,6 +179,8 @@ Available props:
 
 - `search`: use search input instead of title
 - `title`: title heading (via `x-slot` or attribute)
+- `align`: Bootstrap alignment (eg `start`, `end`)
+- `justify`: Bootstrap justification (eg `start`, `center`)
 
 ## Alert
 
@@ -318,6 +343,27 @@ Available props:
 - `model`: Livewire model key
 - `lazy`: bind model on change
 
+## Column
+
+Responsive Bootstrap column.
+
+```html
+
+<x-ux::column margin="3">
+    <x-ux::link :label="$user->name" click="$emit('showModal', 'users.read', {{ $user->id }})"/>
+    <x-ux::item :date="$user->created_at" size="small" color="muted"/>
+</x-ux::column>
+```
+
+Available props:
+
+- `width`: Bootstrap column width (eg `3`, `4`, `auto`)
+- `flex`: use flexbox on the column
+- `align`: Bootstrap alignment (eg `start`, `end`)
+- `justify`: Bootstrap justification (eg `start`, `center`)
+- `gap`: Bootstrap flexbox gap (eg `2`, `3`)
+- `margin`: Bootstrap margin (eg `1`, `3`)
+
 ## Datalist
 
 A Bootstrap datalist input.
@@ -406,6 +452,24 @@ A Bootstrap validation error.
 Available props:
 
 - `key`: Livewire model key
+
+## Flex
+
+Bootstrap flexbox container.
+
+```html
+
+<x-ux::flex justify="between">
+    <x-ux::check :checkLabel="__('Remember me')" model="remember"/>
+    <x-ux::link :label="__('Forgot password?')" route="password.forgot"/>
+</x-ux::flex>
+```
+
+Available props:
+
+- `align`: Bootstrap alignment (eg `start`, `end`)
+- `justify`: Bootstrap justification (eg `start`, `center`)
+- `gap`: Bootstrap flexbox gap (eg `2`, `3`)
 
 ## Form Group
 
@@ -713,6 +777,30 @@ Available props:
 - `switch`: set radio to be a switch
 - `model`: Livewire model key
 - `lazy`: bind model on change
+
+## Row
+
+Bootstrap row container.
+
+```html
+
+<x-ux::row justify="between">
+    <x-ux::column width="auto">
+        &copy; {{ now()->format('Y') }}
+        <x-ux::link :label="config('app.name')" route="welcome"/>
+    </x-ux::column>
+
+    <x-ux::column width="auto" flex justify="center" gap="3">
+        <x-ux::link :label="__('Contact')" href="mailto:{{ config('mail.from.address') }}"/>
+    </x-ux::column>
+</x-ux::row>
+```
+
+Available props:
+
+- `align`: Bootstrap alignment (eg `start`, `end`)
+- `justify`: Bootstrap justification (eg `start`, `center`)
+- `gap`: Bootstrap flexbox gap (eg `2`, `3`)
 
 ## Select
 

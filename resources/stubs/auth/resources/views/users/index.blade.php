@@ -8,16 +8,17 @@
     <x-ux::list>
         @foreach($users as $user)
             <x-ux::list-row>
-                <div class="col-lg mb-3 mb-lg-0">
+                <x-ux::column margin="3">
                     <x-ux::link :label="$user->name" click="$emit('showModal', 'users.read', {{ $user->id }})"/>
                     <x-ux::item :date="$user->created_at" size="small" color="muted"/>
-                </div>
-                <div class="col-lg-auto d-flex gap-2">
+                </x-ux::column>
+
+                <x-ux::action-column>
                     <x-ux::action icon="eye" :title="__('Read')" click="$emit('showModal', 'users.read', {{ $user->id }})"/>
                     <x-ux::action icon="pencil-alt" :title="__('Update')" click="$emit('showModal', 'users.save', {{ $user->id }})"/>
                     <x-ux::action icon="unlock-alt" :title="__('Password')" click="$emit('showModal', 'users.password', {{ $user->id }})"/>
                     <x-ux::action icon="trash-alt" :title="__('Delete')" click="delete({{ $user->id }})" confirm/>
-                </div>
+                </x-ux::action-column>
             </x-ux::list-row>
         @endforeach
     </x-ux::list>

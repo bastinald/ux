@@ -1,13 +1,14 @@
 @props([
-    //
+    'color' => 'outline-primary',
+    'size' => 'sm',
 ])
 
 @php
     $attributes = $attributes->class([
         //
     ])->merge([
-        'color' => 'outline-primary',
-        'size' => 'sm',
+        'color' => $color,
+        'size' => $size,
     ]);
 @endphp
 

@@ -1,17 +1,20 @@
 @props([
-'search' => false,
+    'search' => false,
     'title' => null,
+    'align' => 'end',
+    'justify' => 'between',
 ])
 
 @php
     $attributes = $attributes->class([
-        'row justify-content-between align-items-end',
-    ])->merge([
         //
+    ])->merge([
+        'align' => $align,
+        'justify' => $justify,
     ]);
 @endphp
 
-<div {{ $attributes }}>
+<x-ux::row {{ $attributes }}>
     @if($search)
         <div class="col-lg-3 mb-3">
             <x-ux::input icon="search" :placeholder="__('Search')" type="search" model="search" debounce/>
@@ -25,4 +28,4 @@
     <div class="col-lg-auto d-flex align-items-center gap-2 mb-3">
         {{ $slot }}
     </div>
-</div>
+</x-ux::row>

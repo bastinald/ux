@@ -11,17 +11,20 @@
         'btn btn-' . $color,
         'btn-' . $size => $size,
     ])->merge([
-        'type' => 'button',
-        'data-bs-toggle' => 'dropdown',
+        'icon' => $icon,
+        'label' => $label,
+        'color' => $color,
+        'size' => $size,
+        'toggle' => 'dropdown',
     ]);
 @endphp
 
 <div class="dropdown d-inline-block">
-    <button {{ $attributes }}>
+    <x-ux::button {{ $attributes }}>
         <x-ux::icon :name="$icon"/>
 
         {{ $label }}
-    </button>
+    </x-ux::button>
 
     <div class="dropdown-menu">
         {{ $items ?? $slot }}

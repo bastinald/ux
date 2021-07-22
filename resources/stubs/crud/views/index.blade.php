@@ -8,15 +8,16 @@
     <x-ux::list>
         @foreach($dummyModelVariables as $dummyModelVariable)
             <x-ux::list-row>
-                <div class="col-lg mb-3 mb-lg-0">
+                <x-ux::column margin="3">
                     <x-ux::link :label="$dummyModelVariable->name" click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
                     <x-ux::item :date="$dummyModelVariable->created_at" size="small" color="muted"/>
-                </div>
-                <div class="col-lg-auto d-flex gap-2">
+                </x-ux::column>
+
+                <x-ux::action-column>
                     <x-ux::action icon="eye" :title="__('Read')" click="$emit('showModal', 'dummy.prefix.read', {{ $dummyModelVariable->id }})"/>
                     <x-ux::action icon="pencil-alt" :title="__('Update')" click="$emit('showModal', 'dummy.prefix.save', {{ $dummyModelVariable->id }})"/>
                     <x-ux::action icon="trash-alt" :title="__('Delete')" click="delete({{ $dummyModelVariable->id }})" confirm/>
-                </div>
+                </x-ux::action-column>
             </x-ux::list-row>
         @endforeach
     </x-ux::list>

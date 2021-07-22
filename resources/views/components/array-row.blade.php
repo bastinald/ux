@@ -11,7 +11,7 @@
 @endphp
 
 <div {{ $attributes }}>
-    <div class="row align-items-start gx-2">
+    <x-ux::row align="start" gap="2">
         {{ $slot }}
-    </div>
+    </x-ux::row>
 </div>

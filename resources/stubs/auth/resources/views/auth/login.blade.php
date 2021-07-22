@@ -3,10 +3,10 @@
         <x-ux::input :label="__('Email')" type="email" model="email"/>
         <x-ux::input :label="__('Password')" type="password" model="password"/>
 
-        <div class="d-flex justify-content-between">
+        <x-ux::flex justify="between">
             <x-ux::check :checkLabel="__('Remember me')" model="remember"/>
             <x-ux::link :label="__('Forgot password?')" route="password.forgot"/>
-        </div>
+        </x-ux::flex>
     </x-slot>
 
     <x-slot name="footer">
