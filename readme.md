@@ -1,14 +1,6 @@
-# No Longer Maintained
-
-Check out my UI, Auth, & CRUD scaffolding package here: https://github.com/bastinald/laravel-livewire-ui
-
----
-
 # bastinald/ux
 
 Laravel UI, Auth, & CRUD scaffolding package using Bootstrap & Livewire.
-
-<a href="https://www.youtube.com/watch?v=X9oyYlik56U"><img src="https://i.imgur.com/IWHZsV9.png"></a>
 
 ## Features
 
